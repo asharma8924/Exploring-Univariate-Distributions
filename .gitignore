@@ -1,160 +1,178 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+#!/usr/bin/env python
+# coding: utf-8
 
-# C extensions
-*.so
+# In[47]:
+import numpy as np
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# In[48]:
+np.random.seed(123)
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# In[49]:
+large_sample = np.random.normal(loc=0, scale=1, size=100000)
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# In[50]:
+print(large_sample[:5])
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
+# In[51]:
+import matplotlib.pyplot as plt
 
-# Translations
-*.mo
-*.pot
+# In[52]:
+plt.hist(large_sample, bins=30, color='blue', edgecolor='black')
+plt.title('Histogram of Random Values (Standard Normal)')
+plt.xlabel('Values')
+plt.ylabel('Frequency')
+plt.show()
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+# In[53]:
+import numpy as py
 
-# Flask stuff:
-instance/
-.webassets-cache
+# In[54]:
+np.random.seed(123)
 
-# Scrapy stuff:
-.scrapy
+# In[55]:
+large_uniform_sample = np.random.uniform(low=-3, high=3, size=100000)
 
-# Sphinx documentation
-docs/_build/
+# In[56]:
+print(large_uniform_sample[:5])
 
-# PyBuilder
-.pybuilder/
-target/
+# In[57]:
+import matplotlib.pyplot as plt
+plt.hist(large_uniform_sample, bins=30, color='green', edgecolor='black')
+plt.title('Histogram of Random Values (Uniform -3 to 3)')
+plt.xlabel('Values')
+plt.ylabel('Frequency')
+plt.show()
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# In[58]:
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
 
-# IPython
-profile_default/
-ipython_config.py
+x_values = np.arange(-4, 4.1, 0.1)
+densities = norm.pdf(x_values, loc=0, scale=1)
+plt.plot(x_values, densities, color='blue', linewidth=2)
+plt.title('Probability Density Plot (Standard Normal)')
+plt.xlabel('Values')
+plt.ylabel('Probability Density')
+plt.show()
 
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
+# In[59]:
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
 
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
+x_values = np.arange(-4, 4.1, 0.1)
+densities = norm.pdf(x_values, loc=0, scale=1)
+plt.plot(x_values, densities, color='blue', linewidth=2, label='Theoretical Normal')
+plt.hist(large_sample, bins=30, color='green', alpha=0.5, label='Histogram', density=True)
+plt.title('Probability Density Plot (Standard Normal) vs. Histogram')
+plt.xlabel('Values')
+plt.ylabel('Probability Density')
+plt.legend(loc='upper right')
+plt.show()
 
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
+# In[60]:
+print("When one compares the probability density curve to the histogram one should notice that the curve very closely resembles the bell-shaped curve characteristic of a standard normal distribution.")
 
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/#use-with-ide
-.pdm.toml
+# In[61]:
+import numpy as np
+import matplotlib.pyplot as plt
+x_values_uniform = np.arange(-4, 4.1, 0.1)
+densities_uniform = np.where((x_values_uniform >= -3) & (x_values_uniform <= 3), 1/6, 0)
+plt.plot(x_values_uniform, densities_uniform, color='red', linewidth=2)
+plt.title('Probability Density Plot (Uniform -3 to 3)')
+plt.xlabel('Values')
+plt.ylabel('Probability Density')
+plt.show()
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
+# In[62]:
+import numpy as np
+import matplotlib.pyplot as plt
+x_values_uniform = np.arange(-4, 4.1, 0.1)
+densities_uniform = np.where((x_values_uniform >= -3) & (x_values_uniform <= 3), 1/6, 0)
+plt.plot(x_values_uniform, densities_uniform, color='red', linewidth=2, label='Theoretical Uniform')
+plt.hist(large_uniform_sample, bins=30, color='green', alpha=0.5, label='Histogram', density=True)
+plt.title('Probability Density Plot (Uniform -3 to 3) vs. Histogram')
+plt.xlabel('Values')
+plt.ylabel('Probability Density')
+plt.legend(loc='upper right')
+plt.show()
 
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
+# In[63]:
+import numpy as np
+np.random.seed(123)
+small_sample = np.random.normal(loc=0, scale=1, size=5)
+print(small_sample)
 
-# SageMath parsed files
-*.sage.py
+# In[64]:
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+np.random.seed(123)
+small_sample = np.random.normal(loc=0, scale=1, size=5)
+x_values = np.arange(-4, 4.1, 0.1)
+densities = norm.pdf(x_values, loc=0, scale=1)
+plt.hist(small_sample, bins=5, color='green', alpha=0.5, density=True, label='Histogram')
+plt.plot(x_values, densities, color='blue', linewidth=2, label='Theoretical Normal')
+plt.title('Histogram and Density Plot (Small Sample vs. Normal Distribution)')
+plt.xlabel('Values')
+plt.ylabel('Density')
+plt.legend(loc='upper right')
+plt.show()
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+# In[65]:
+import numpy as np
+np.random.seed(123)
+small_uniform_sample = np.random.uniform(low=-3, high=3, size=5)
+print(small_uniform_sample)
 
-# Spyder project settings
-.spyderproject
-.spyproject
+# In[66]:
+import numpy as np
+import matplotlib.pyplot as plt
+np.random.seed(123)
+small_uniform_sample = np.random.uniform(low=-3, high=3, size=5)
+x_values_uniform = np.arange(-4, 4.1, 0.1)
+densities_uniform = np.where((x_values_uniform >= -3) & (x_values_uniform <= 3), 1/6, 0)
+plt.hist(small_uniform_sample, bins=5, color='green', alpha=0.5, density=True, label='Histogram')
+plt.plot(x_values_uniform, densities_uniform, color='blue', linewidth=2, label='Theoretical Uniform')
+plt.title('Histogram and Density Plot (Small Sample vs. Uniform Distribution)')
+plt.xlabel('Values')
+plt.ylabel('Density')
+plt.legend(loc='upper right')
+plt.show()
 
-# Rope project settings
-.ropeproject
+# In[67]:
+print("Part 2")
 
-# mkdocs documentation
-/site
+# In[68]:
+import random
+num_rolls = 10000
+sample = [random.randint(1, 20) for _ in range(num_rolls)]
+print(sample[:10])
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+# In[69]:
+import random
+import matplotlib.pyplot as plt
+import numpy as np
+num_rolls = 10000
+sample = [random.randint(1,20) for _ in range(num_rolls)]
+plt.hist(sample, bins=range(1,22), edgecolor='black', alpha=0.7)
+plt.xlabel('Outcome')
+plt.ylabel('Frequency')
+plt.title('Histogram of 20 sided of Die Rolls')
+plt.grid(True)
+plt.show()
+mean = np.mean(sample)
+median = np.median(sample)
+mode = max(set(sample),key=sample.count)
+print(f"Mean: {mean}")
+print(f"Median: {median}")
+print(f"Mode: {mode}")
 
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+# In[70]:
+import numpy as np
+import matplotlib.pyplot as plt
+num_samples = 10000
+mu = 10000
+sigma = 2
+normal
